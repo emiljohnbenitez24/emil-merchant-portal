@@ -1,0 +1,180 @@
+@import "./utils/Colors.scss";
+
+body {
+    margin: 0 !important;
+    overflow-y: hidden;
+
+    .ant-layout-sider-children {
+        background-color: $white;
+
+        .ant-menu {
+            background-color: $white;
+        }
+    }
+
+    .list-container {
+        flex: 1;
+        padding: 2vh;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5vh;
+    }
+
+    .list-title {
+        color: $primary;
+        font-weight: bold;
+        font-size: 5vh;
+        text-align: center;
+    }
+
+    .empty-text {
+        font-size: 5vh;
+        opacity: 0.5;
+    }
+
+    .ant-card {
+        height: 36vh;
+        width: 40vh;
+        overflow-wrap: break-word;
+        border: 1px solid $primary_light;
+
+        .ant-card-head {
+            background-color: $primary;
+            color: $white;
+            text-align: center;
+        }
+
+        .ant-card-body {
+            height: 22vh;
+            overflow-y: auto;
+            border: none !important;
+        }
+
+        .ant-card-actions {
+            li {
+
+                span {
+                    svg {
+                        font-size: 3vh;
+                    }
+
+                    svg:hover {
+                        color: $primary;
+                    }
+
+                    svg:focus {
+                        color: $primary;
+                    }
+                }
+
+                :hover {
+                    color: $primary !important;
+                }
+
+            }
+        }
+
+        p {
+            text-align: center;
+        }
+
+    }
+
+    .ant-modal,
+    .ant-modal-content {
+        padding: 0 !important;
+
+        .ant-modal-close {
+            color: $white;
+        }
+
+        .ant-modal-close:hover {
+            color: $white;
+        }
+
+        .ant-modal-body {
+            padding: 5vh;
+
+            .ant-input:focus,
+            .ant-input:hover {
+                border: 1px solid $primary !important;
+                box-shadow: none;
+            }
+
+            .ant-select-selector:hover {
+                border: 1px solid $primary !important;
+                box-shadow: none !important;
+            }
+
+            .ant-select-focused .ant-select-selector {
+                border: 1px solid $primary !important;
+                box-shadow: none !important;
+            }
+        }
+
+        .ant-modal-header {
+            background-color: $primary;
+            text-align: center;
+            padding: 3vh;
+
+            .ant-modal-title {
+                color: $white;
+                font-size: 2.5vh;
+            }
+        }
+
+        .ant-modal-footer {
+            padding: 5vh;
+        }
+
+    }
+
+    .ant-btn-primary {
+        background-color: $primary;
+        font-size: 1.8vh;
+        padding: 2vh 3vh;
+    }
+
+    .ant-btn-primary:hover {
+        font-weight: bold;
+        background-color: $primary !important;
+        border: 1px solid $primary !important;
+    }
+
+
+    .ant-btn-default {
+        background-color: $white;
+        font-size: 1.8vh;
+        padding: 2vh 2vh;
+    }
+
+    .ant-btn-default:hover {
+        font-weight: bold;
+        background-color: $white !important;
+        border: 1px solid $primary !important;
+        color: $primary !important;
+    }
+
+    .ant-select-dropdown-menu-item {
+        color: blue !important;
+    }
+
+    .ant-select-dropdown {
+        .ant-select-item-option {
+            border: 1px solid $white !important;
+        }
+
+        .ant-select-item-option-selected {
+            background-color: $primary !important;
+
+            .ant-select-item-option-content {
+                color: $white;
+            }
+
+            .anticon {
+                color: $white;
+            }
+        }
+    }
+
+}

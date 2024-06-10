@@ -1,0 +1,34 @@
+@import '../../utils/Colors.scss';
+
+.ant-layout-sider {
+    .emp-logo {
+        height: 10vh;
+        width: 10vh;
+        display: flex;
+        margin: 2vh auto;
+    }
+
+    .ant-menu {
+        margin-top: 3vh;
+
+        .ant-menu-item {
+            color: $black;
+            font-size: 1.8vh;
+
+            .anticon {
+                font-size: 1.8vh;
+            }
+        }
+
+        .ant-menu-item-selected {
+            border-radius: 0;
+            background-color: $primary_light;
+            color: $black;
+            border-right: 6px solid $primary;
+        }
+
+        .ant-menu-item:not(.ant-menu-item-selected):hover {
+            color: $primary;
+        }
+    }
+}
