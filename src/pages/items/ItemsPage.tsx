@@ -87,7 +87,7 @@ const ItemsPage = () => {
                     <SecondaryButton title='Go Back' onClick={() => navigate(-1)} />
                     <PrimaryButton title='Add Item' onClick={() => setModalVisible(true)} />
                 </div>
-                <p className="list-title">{state.category.name} items available  at {state.store.name}</p>
+                <p className="list-title">{state.category.name} available  at {state.store.name}</p>
                 <ItemList items={items} deleteItem={deleteItem} setSelectedItem={setSelectedItem} />
             </div>
             <ItemModal modalVisible={modalVisible} item={item} title={item ? 'Edit Item' : 'Add Item'} submit={item ? updateItem : addItem} cancel={cancel} />
