@@ -23,9 +23,18 @@ const ItemCard: React.FC<Props> = ({ item, deleteItem, setSelectedItem }) => {
                 </Tooltip>
             ]}
         >
-            <p>Category: {item.category}</p>
-            <p>Price: ₱{item.price}</p>
-            <p>Stock: {item.stock}</p>
+            {item.options ? item.options.map(option => {
+                console.log(option)
+                return <div>
+                    <p>Option: {option.name}</p>
+                    <p>Price: ₱{option.price}</p>
+                    <p>Stock: {option.stock}</p>
+                </div>
+            }) : <div>
+                <p>Price: ₱{item.price}</p>
+                <p>Cost: ₱{item.cost}</p>
+                <p>Stock: {item.stock}</p>
+            </div>}
         </Card>
     )
 }

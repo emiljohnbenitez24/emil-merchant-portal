@@ -12,49 +12,15 @@
         "required": true
     },
     {
-        "name": "stock",
-        "label": "Stock",
+        "name": "cost",
+        "label": "Cost",
         "type": "number",
         "required": true
     },
     {
-        "name": "category",
-        "label": "Category",
-        "type": "selectSingle",
-        "required": true,
-        "categories": [
-            {
-                "label": "Soda",
-                "value": "Soda"
-            },
-            {
-                "label": "Pasta",
-                "value": "Pasta"
-            },
-            {
-                "label": "Burger",
-                "value": "Burger"
-            }
-        ]
-    },
-    {
-        "name": "options",
-        "label": "Options",
-        "type": "selectMultiple",
-        "required": false,
-        "options": [
-            {
-                "label": "Small",
-                "value": "Small"
-            },
-            {
-                "label": "Medium",
-                "value": "Medium"
-            },
-            {
-                "label": "Large",
-                "value": "Large"
-            }
-        ]
+        "name": "stock",
+        "label": "Stock",
+        "type": "number",
+        "required": true
     }
 ]

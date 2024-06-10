@@ -10,6 +10,7 @@ interface Props {
 
 
 const StoreList: React.FC<Props> = ({ stores, deleteStore, setSelectedStore }) => {
+
     return (
         <div className='list-container'>
             {stores.length > 0 ? stores.map(store => 

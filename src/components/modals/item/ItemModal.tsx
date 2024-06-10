@@ -2,37 +2,32 @@
 import React, { useState } from "react";
 import { Modal } from "antd";
 import DynamicForm from "../../forms/DynamicForm";
-import { StoreProps } from "../../../utils/models/storeModel";
-import formConfig from '../../../jsons/storeForm.json'
+import formConfig from '../../../jsons/itemForm.json'
+import { ItemProps } from "../../../utils/models/itemModel";
 
 interface Props {
-    store: StoreProps;
+    item: ItemProps;
     title: string;
     modalVisible: boolean;
-    submit: (values: StoreProps) => void;
+    submit: (values: ItemProps) => void;
     cancel: () => void;
 }
 
-const StoreModal: React.FC<Props> = ({ modalVisible, submit, cancel, title, store }) => {
+const StoreModal: React.FC<Props> = ({ modalVisible, submit, cancel, title, item }) => {
     const [formInstance, setFormInstance] = useState<any>(null);
-    
+
     const handleOk = async () => {
         try {
             const values = await formInstance.validateFields();
             submit(values);
-            if(formInstance){
-              formInstance.resetFields();
-            }
+            formInstance.resetFields();
         } catch (error) {
             console.error('Validation failed:', error);
         }
     };
 
     const handleCancel = () => {
-      if(formInstance){
-        console.log('ey', store)
         formInstance.resetFields();
-      }
         cancel();
     };
 
@@ -49,7 +44,7 @@ const StoreModal: React.FC<Props> = ({ modalVisible, submit, cancel, title, stor
             onCancel={handleCancel}
             okText='Save'
         >
-            <DynamicForm formConfig={formConfig} initialValues={store} onFormInstance={handleFormInstance} />
+            <DynamicForm formConfig={formConfig} initialValues={item} onFormInstance={handleFormInstance} isItem/>
         </Modal>
     );
 };

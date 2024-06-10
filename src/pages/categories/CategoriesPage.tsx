@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from "react"
 import LayoutContainer from "../../layout/LayoutContainer"
-import './ItemsPage.scss'
+import './CategoriesPage.scss'
 import PrimaryButton from "../../components/buttons/PrimaryButton"
-import ItemModal from "../../components/modals/item/ItemModal"
 import { db } from "../../configs/firebaseConfig"
 import { onValue, ref, set, update } from 'firebase/database';
 import uuid from 'react-uuid';
-import { ItemProps } from "../../utils/models/itemModel"
 import { useLocation, useNavigate } from "react-router-dom"
-import ItemList from "./itemList/itemList"
 import SecondaryButton from "../../components/buttons/SecondaryButton"
+import CategoryList from "./categoryList/CategoryList"
+import CategoryModal from "../../components/modals/category/categoryModal"
+import { CategoryProps } from "../../utils/models/categoryModel"
 
-const ItemsPage = () => {
+const CategoriesPage = () => {
     const navigate = useNavigate()
     const { state } = useLocation();
-    const [item, setItem] = useState(null)
-    const [items, setItems] = useState([])
+    const [category, setCategory] = useState(null)
+    const [categories, setCategories] = useState([])
     const [modalVisible, setModalVisible] = useState(false)
 
     useEffect(() => {
-        const storeRef = ref(db, 'stores/' + state.store.id + '/categories/' + state.category.id + '/items/')
+        const storeRef = ref(db, 'stores/' + state.store.id + '/categories/')
         onValue(storeRef, (snapshot) => {
             const data = snapshot.val();
             if (!!data) {
@@ -27,30 +27,29 @@ const ItemsPage = () => {
                 for (let i in data) {
                     newArr.push({ id: i, ...data[i] })
                 }
-                setItems(newArr)
+                setCategories(newArr)
             } else {
-                setItems([])
+                setCategories([])
                 console.log('data not found!');
             }
         });
     }, [])
 
-    const addItem = async (values: ItemProps) => {
+    const addCategory = async (values: CategoryProps) => {
         try {
-            await set(ref(db, 'stores/' + state.store.id + '/categories/' + state.category.id + '/items/' + uuid()),
-                { ...values, options: values.options ? values.options : null })
+            await set(ref(db, 'stores/' + state.store.id + '/categories/' + uuid()), values)
             setModalVisible(false)
         } catch (error) {
             console.log('error adding item', error)
         }
     }
 
-    const updateItem = async (values: ItemProps) => {
+    const updateCategory = async (values: CategoryProps) => {
         const updates = {};
-        updates['stores/' + state.store.id + '/categories/' + state.category.id + '/items/' + item.id] = { ...values, options: values.options ? values.options : null }
+        updates['stores/' + state.store.id + '/categories/' + category.id] = values
         try {
             await update(ref(db), updates)
-            setItem(null)
+            setCategory(null)
             setModalVisible(false)
         } catch (error) {
             console.log('error updating item', error)
@@ -58,41 +57,40 @@ const ItemsPage = () => {
     }
 
 
-    const deleteItem = async (id: string) => {
+    const deleteCategory = async (id: string) => {
         try {
-            await set(ref(db, 'stores/' + state.store.id + '/categories/' + state.category.id + '/items/' + id), null)
+            await set(ref(db, 'stores/' + state.store.id + '/categories/' + id), null)
         } catch (error) {
             console.log('error deleting item', error)
         }
     }
 
 
-    const setSelectedItem = (selectedItem) => {
-        setItem(selectedItem)
+    const setSelectedCategory = (selectedItem) => {
+        setCategory(selectedItem)
         setModalVisible(true)
     }
 
 
     const cancel = () => {
-        setItem(null)
+        setCategory(null)
         setTimeout(() => {
             setModalVisible(false)
         }, 0)
     }
-    
     return (
         <LayoutContainer>
             <div className="items-container">
                 <div className="button-container">
                     <SecondaryButton title='Go Back' onClick={() => navigate(-1)} />
-                    <PrimaryButton title='Add Item' onClick={() => setModalVisible(true)} />
+                    <PrimaryButton title='Add Category' onClick={() => setModalVisible(true)} />
                 </div>
-                <p className="list-title">{state.category.name} items available  at {state.store.name}</p>
-                <ItemList items={items} deleteItem={deleteItem} setSelectedItem={setSelectedItem} />
+                <p className="list-title">{state.store.name}'s Categories</p>
+                <CategoryList categories={categories} store={state.store} deleteCategory={deleteCategory} setSelectedCategory={setSelectedCategory} />
             </div>
-            <ItemModal modalVisible={modalVisible} item={item} title={item ? 'Edit Item' : 'Add Item'} submit={item ? updateItem : addItem} cancel={cancel} />
+            <CategoryModal modalVisible={modalVisible} category={category} title={category ? 'Edit Category' : 'Add Category'} submit={category ? updateCategory : addCategory} cancel={cancel} />
         </LayoutContainer>
     )
 }
 
-export default React.memo(ItemsPage)
+export default React.memo(CategoriesPage)

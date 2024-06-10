@@ -43,13 +43,11 @@ const LayoutContainer: React.FC<any> = ({ children }) => {
     return (
         <Layout>
             <LayoutSideBar items={items} currentPath={currentPath} handleMenuClick={handleMenuClick} />
-            <Layout>
                 <Content>
                     <div>
                         {children}
                     </div>
                 </Content>
-            </Layout>
         </Layout>
     );
 };

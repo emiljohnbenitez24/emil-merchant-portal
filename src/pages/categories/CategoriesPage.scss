@@ -1,0 +1,15 @@
+@import "../../utils/Colors.scss";
+
+
+.category-container {
+    height: 100vh;
+    display: flex;
+    padding: 10vh;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+
+    .button-container {
+        align-self: flex-end;
+    }
+}

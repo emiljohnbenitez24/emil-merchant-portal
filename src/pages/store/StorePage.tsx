@@ -69,7 +69,9 @@ const StorePage = () => {
 
     const cancel = () => {
         setStore(null)
-        setModalVisible(false)
+        setTimeout(() => {
+            setModalVisible(false)
+        }, 0)
     }
 
 

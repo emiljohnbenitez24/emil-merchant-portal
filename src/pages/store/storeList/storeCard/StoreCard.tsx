@@ -3,6 +3,7 @@ import { StoreProps } from "../../../../utils/models/storeModel"
 import { EditOutlined, DeleteOutlined, FileSearchOutlined } from "@ant-design/icons"
 import { useNavigate } from "react-router-dom";
 import React from "react";
+import { getlength } from "../../../../utils/getLength";
 
 interface Props {
     store: StoreProps
@@ -17,7 +18,7 @@ const StoreCard: React.FC<Props> = ({ store, deleteStore, setSelectedStore }) =>
         <Card title={store.name}
             actions={[
                 <Tooltip placement="bottom" title={"View"}>
-                    <FileSearchOutlined className="custom-icon" onClick={() => navigate('/items', { state: { store } })} />
+                    <FileSearchOutlined className="custom-icon" onClick={() => navigate('/categories', { state: { store } })} />
                 </Tooltip>
                 ,
                 <Tooltip placement="bottom" title={"Edit"}>
@@ -31,6 +32,7 @@ const StoreCard: React.FC<Props> = ({ store, deleteStore, setSelectedStore }) =>
             <div>
                 <p>Description: {store.description}</p>
                 <p>Address: {store.address}</p>
+                <p>No. of Categories: {getlength(store.categories)}</p>
             </div>
         </Card>
     )

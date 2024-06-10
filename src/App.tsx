@@ -5,6 +5,7 @@ import "./App.scss"
 import WelcomePage from "./pages/welcome/WelcomePage"
 import ItemsPage from "./pages/items/ItemsPage"
 import React from "react"
+import CategoriesPage from "./pages/categories/CategoriesPage"
 
 
 const router = createBrowserRouter(
@@ -13,6 +14,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<Navigate to="/welcome" replace={true} />}/>
       <Route path="/welcome" element={<WelcomePage />} />
       <Route path="/store" element={<StorePage />} />
+      <Route path="/categories" element={<CategoriesPage />} />
       <Route path="/items" element={<ItemsPage />} />
     </Route>
   )
