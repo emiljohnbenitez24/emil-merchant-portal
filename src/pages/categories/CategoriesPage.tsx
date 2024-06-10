@@ -46,7 +46,7 @@ const CategoriesPage = () => {
 
     const updateCategory = async (values: CategoryProps) => {
         const updates = {};
-        updates['stores/' + state.store.id + '/categories/' + category.id] = values
+        updates['stores/' + state.store.id + '/categories/' + category.id] = {...values, items: category.items}
         try {
             await update(ref(db), updates)
             setCategory(null)
