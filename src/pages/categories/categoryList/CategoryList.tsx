@@ -15,7 +15,7 @@ interface Props {
 const CategoryList: React.FC<Props> = ({ store, categories, deleteCategory, setSelectedCategory }) => {
     return (
         <div className='list-container'>
-            <Row gutter={[16, 24]}>
+            <Row gutter={[34, 24]}>
                 {categories.length > 0 ? categories.map(category =>
                     <Col className="gutter-row">
                         <CategoryCard key={category.id} store={store} category={category} deleteCategory={deleteCategory} setSelectedCategory={setSelectedCategory} />

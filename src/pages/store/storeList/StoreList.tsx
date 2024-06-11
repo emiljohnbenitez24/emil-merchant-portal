@@ -13,14 +13,14 @@ interface Props {
 const StoreList: React.FC<Props> = ({ stores, deleteStore, setSelectedStore }) => {
 
     return (
-            <Row gutter={[16, 24]} >
-                {stores.length > 0 ? stores.map(store =>
-                    <Col className="gutter-row">
-                        <StoreCard key={store.id} store={store} deleteStore={deleteStore} setSelectedStore={setSelectedStore} />
-                    </Col>
-                )
-                    : <p className='empty-text'>No Stores</p>}
-            </Row>
+        <Row gutter={[34, 24]}>
+            {stores.length > 0 ? stores.map(store =>
+                <Col className="gutter-row">
+                    <StoreCard key={store.id} store={store} deleteStore={deleteStore} setSelectedStore={setSelectedStore} />
+                </Col>
+            )
+                : <p className='empty-text'>No Stores</p>}
+        </Row>
     )
 }
 
