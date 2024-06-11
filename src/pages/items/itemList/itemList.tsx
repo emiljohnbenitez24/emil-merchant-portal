@@ -54,7 +54,7 @@ const columns = (setSelectedItem, deleteItem) => [
     {
         title: 'Actions',
         key: 'actions',
-        render: (text, record) => (
+        render: (record) => (
             <div>
                 <Tooltip placement="bottom" title={"Edit"}>
                     <EditOutlined onClick={() => setSelectedItem(record)} />
