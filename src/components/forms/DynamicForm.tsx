@@ -37,7 +37,6 @@ const DynamicForm: React.FC<Props> = ({ formConfig, initialValues, onFormInstanc
 
     const renderFormItems = () => {
         return formConfig.map((field) => {
-            console.log(additionalFieldLength)
             const shouldHideField = additionalFieldLength && (field.name === "price" || field.name === "cost" || field.name === "stock");
             if (shouldHideField) return null;
             switch (field.type) {
@@ -95,7 +94,7 @@ const DynamicForm: React.FC<Props> = ({ formConfig, initialValues, onFormInstanc
             {(fields, { add, remove }) => (
                 <>
                     {fields.map(({ key, name, ...restField }, index) => (
-                        <div key={key}>
+                        <div key={key} style={{marginTop: '2vh'}}>
                             <Form.Item
                                 {...restField}
                                 name={[name, 'name']}
