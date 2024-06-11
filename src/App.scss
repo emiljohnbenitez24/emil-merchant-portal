@@ -12,30 +12,22 @@ body {
         }
     }
 
-    .list-container {
-        flex: 1;
-        padding: 2vh;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 5vh;
-    }
-
     .list-title {
         color: $primary;
-        font-weight: bold;
         font-size: 5vh;
+        font-weight: bold;
         text-align: center;
     }
 
     .empty-text {
+        margin: 0 auto;
         font-size: 4vh;
         font-style: italic;
         opacity: 0.5;
     }
 
     .ant-card {
-        height: 36vh;
-        width: 40vh;
+        width: 35vh;
         overflow-wrap: break-word;
         border: 1px solid $primary_light;
 
@@ -156,26 +148,46 @@ body {
         color: $primary !important;
     }
 
-    .ant-select-dropdown-menu-item {
-        color: blue !important;
-    }
-
-    .ant-select-dropdown {
-        .ant-select-item-option {
-            border: 1px solid $white !important;
+    .ant-table-wrapper {
+        min-width: 120vh;
+        .ant-table {
+            .ant-table-container {
+                .ant-table-content {
+                    table {
+                        .ant-table-thead {
+                            tr {
+                                th {
+                                    text-align: center;
+                                    color: $primary;
+                                }
+                            }
+                        }
+                        .ant-table-tbody {
+                            tr {
+                                td {
+                                    text-align: center;
+                                    .anticon {
+                                        font-size: 3vh ;
+                                        margin-right: 1vh;
+                                    }
+                                    .anticon:hover {
+                                        color: $primary;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
 
-        .ant-select-item-option-selected {
-            background-color: $primary !important;
-
-            .ant-select-item-option-content {
-                color: $white;
-            }
-
-            .anticon {
-                color: $white;
+        .ant-pagination {
+            .ant-pagination-item-active {
+                border: 1px solid $primary;
+                a {
+                    color: $primary;
+                }
             }
         }
     }
-
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { StoreProps } from '../../../utils/models/storeModel'
 import StoreCard from './storeCard/StoreCard'
+import { Col, Row } from 'antd';
 
 interface Props {
     stores: StoreProps[]
@@ -12,11 +13,14 @@ interface Props {
 const StoreList: React.FC<Props> = ({ stores, deleteStore, setSelectedStore }) => {
 
     return (
-        <div className='list-container'>
-            {stores.length > 0 ? stores.map(store => 
-            <StoreCard key={store.id} store={store} deleteStore={deleteStore} setSelectedStore={setSelectedStore} />) 
-            : <p className='empty-text'>No Stores</p>}
-        </div>
+            <Row gutter={[16, 24]} >
+                {stores.length > 0 ? stores.map(store =>
+                    <Col className="gutter-row">
+                        <StoreCard key={store.id} store={store} deleteStore={deleteStore} setSelectedStore={setSelectedStore} />
+                    </Col>
+                )
+                    : <p className='empty-text'>No Stores</p>}
+            </Row>
     )
 }
 

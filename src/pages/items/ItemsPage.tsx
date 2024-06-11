@@ -79,7 +79,7 @@ const ItemsPage = () => {
             setModalVisible(false)
         }, 0)
     }
-    
+
     return (
         <LayoutContainer>
             <div className="items-container">

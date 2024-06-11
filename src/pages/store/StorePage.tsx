@@ -42,7 +42,8 @@ const StorePage = () => {
 
     const updateStore = async (values: StoreProps) => {
         const updates = {};
-        updates['stores/' + store.id] = {...values, items: store.items}
+        console.log(store.categories)
+        updates['stores/' + store.id] = {...values, categories: store.categories ? store.categories : null}
         try {
             await update(ref(db), updates)
             setStore(null)

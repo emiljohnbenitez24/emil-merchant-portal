@@ -5,7 +5,6 @@ import { CategoryProps } from "../../utils/models/categoryModel";
 import { StoreProps } from "../../utils/models/storeModel";
 import PrimaryButton from "../buttons/PrimaryButton";
 import SecondaryButton from "../buttons/SecondaryButton";
-import './DynamicForm.scss'
 
 interface FormField {
     name: string;
@@ -82,7 +81,7 @@ const DynamicForm: React.FC<Props> = ({ formConfig, initialValues, onFormInstanc
                             label={field.label}
                             rules={[{ required: field.required, message: `${field.label} is required` }]}
                         >
-                            <Input.TextArea />
+                            <Input.TextArea rows={4} />
                         </Form.Item>
                     );
                 default:
@@ -96,7 +95,7 @@ const DynamicForm: React.FC<Props> = ({ formConfig, initialValues, onFormInstanc
             {(fields, { add, remove }) => (
                 <>
                     {fields.map(({ key, name, ...restField }, index) => (
-                        <div key={key} className="additional-fields-container">
+                        <div key={key}>
                             <Form.Item
                                 {...restField}
                                 name={[name, 'name']}
@@ -110,6 +109,15 @@ const DynamicForm: React.FC<Props> = ({ formConfig, initialValues, onFormInstanc
                                 name={[name, 'price']}
                                 label={`Option ${index + 1} Price`}
                                 rules={[{ required: true, message: `Option ${index + 1} Price is required` }]}
+                            >
+                                <Input type="number" />
+                            </Form.Item>
+
+                            <Form.Item
+                                {...restField}
+                                name={[name, 'cost']}
+                                label={`Option ${index + 1} Cost`}
+                                rules={[{ required: true, message: `Option ${index + 1} Cost is required` }]}
                             >
                                 <Input type="number" />
                             </Form.Item>

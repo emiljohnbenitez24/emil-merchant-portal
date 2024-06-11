@@ -46,7 +46,7 @@ const CategoriesPage = () => {
 
     const updateCategory = async (values: CategoryProps) => {
         const updates = {};
-        updates['stores/' + state.store.id + '/categories/' + category.id] = {...values, items: category.items}
+        updates['stores/' + state.store.id + '/categories/' + category.id] = { ...values, items: category.items ? category.items : null }
         try {
             await update(ref(db), updates)
             setCategory(null)
@@ -80,7 +80,7 @@ const CategoriesPage = () => {
     }
     return (
         <LayoutContainer>
-            <div className="items-container">
+            <div className="category-container">
                 <div className="button-container">
                     <SecondaryButton title='Go Back' onClick={() => navigate(-1)} />
                     <PrimaryButton title='Add Category' onClick={() => setModalVisible(true)} />

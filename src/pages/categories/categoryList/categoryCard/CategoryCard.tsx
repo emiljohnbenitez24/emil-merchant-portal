@@ -32,8 +32,8 @@ const StoreCard: React.FC<Props> = ({ store, category, deleteCategory, setSelect
             ]}
         >
             <div>
-                <p>Description: {category.description}</p>
-                <p>No. of Items: {getlength(category.items)}</p>
+                <p>{category.description}</p>
+                <p>{getlength(category.items)} Items</p>
             </div>
         </Card>
     )
